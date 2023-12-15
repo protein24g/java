@@ -15,7 +15,7 @@ class Buffer{
         contents = value;
         System.out.println("생산자 ##### : 생산 " + contents);
         notify(); //데이터를 생산하고 대기 스레드를 깨운다
-        available = false;
+        available = true;
     }
 
     public synchronized int get(){
