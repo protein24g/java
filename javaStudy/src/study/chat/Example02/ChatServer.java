@@ -1,4 +1,4 @@
-package study.chat;
+package study.chat.Example02;
 import java.net.*;
 import java.util.*;
 import java.io.*;
