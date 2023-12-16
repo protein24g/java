@@ -30,8 +30,6 @@ public class ClientEx {
                 out.flush();
 
                 String inMsg = in.readLine();
-
-                // 정살 메시지(bye가 아님)
                 System.out.println("서버 >>" + inMsg);
 
             }
