@@ -13,7 +13,6 @@ public class ClientEx {
 
         try {
             socket = new Socket("localhost", 9999);
-
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
 
@@ -24,14 +23,11 @@ public class ClientEx {
                     out.write(outMsg + "\n");
                     out.flush();
                     break;
-
                 }
                 out.write(outMsg + "\n");
                 out.flush();
-
                 String inMsg = in.readLine();
                 System.out.println("서버 >>" + inMsg);
-
             }
 
         } catch (IOException e) {
@@ -46,6 +42,5 @@ public class ClientEx {
                 e.printStackTrace();
             }
         }
-
     }
 }
