@@ -20,7 +20,6 @@ public class Client {
                 BufferedWriter out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
                 while (true) {
                     String str = scanner.nextLine();
-                    System.out.println(str);
                     out.write(str + "\n");
                     out.flush();
                 }
