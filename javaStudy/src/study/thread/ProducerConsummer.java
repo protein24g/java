@@ -1,6 +1,4 @@
-package study.Thread;
-
-import java.util.*;
+package study.thread;
 
 class Buffer{
     private int contents; //생산자와 소비자가 공유하는 데이터(쌀)를 넣는 곳
