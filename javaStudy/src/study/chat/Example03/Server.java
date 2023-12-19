@@ -11,7 +11,6 @@ public class Server {
             ServerSocket serverSocket = new ServerSocket(9999);
             while(true){
                 Socket socket = serverSocket.accept();
-                System.out.println("생성 완료");
                 Thread thread = new Thread(new ReceiverServer(socket, ary));
                 thread.start();
             }
@@ -31,7 +30,6 @@ class ReceiverServer implements Runnable {
             this.socket = socket;
             this.ary = ary;
             this.ary.add(this.socket);
-            //this.ary.add(new BufferedWriter(new OutputStreamWriter(this.socket.getOutputStream())));
         } catch (Exception e) {
         }
     }
@@ -42,12 +40,14 @@ class ReceiverServer implements Runnable {
             name = in.readLine(); //첫 한번은 이름을 받는다
             sendAll("[" + name + "] 님이 입장하셨습니다");
 
-            String string;
-            while ((string = in.readLine()) != null) {
-                if (string.equalsIgnoreCase("!quit")) break;
+            String string = null;
+            while (true) {
+                string = in.readLine();
                 sendAll(name + " : " + string);
                 System.out.println(name + " : " + string);
             }
+        } catch (SocketException e) {
+            System.out.println("클라이언트(" + name + ")와의 연결이 갑자기 끊겼습니다.");
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

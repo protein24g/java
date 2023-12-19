@@ -19,7 +19,7 @@ public class Client {
 
 class SendThread implements Runnable{
     Socket socket;
-    String string, name;
+    String name;
     BufferedReader keyboard;
     BufferedWriter out;
     public SendThread(Socket socket){
@@ -35,9 +35,8 @@ class SendThread implements Runnable{
             out.write(name + "\n"); //처음엔 이름을 보낸다
             out.flush();
 
-            while((string = keyboard.readLine()) != null){
-                if(string.equalsIgnoreCase("!quit")) break;
-                out.write(string + "\n");
+            while(true){
+                out.write(keyboard.readLine() + "\n");
                 out.flush();
             }
         } catch (Exception e){}
@@ -49,13 +48,10 @@ class ReceiverClient implements Runnable{
     BufferedReader in;
     public ReceiverClient(Socket socket){this.socket = socket;}
     public void run(){
-        String string;
         try{
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             while(true){
-                string = in.readLine();
-                if(string.equalsIgnoreCase("!quit")) break;
-                System.out.println(string);
+                System.out.println(in.readLine());
             }
         }catch (Exception e){}
     }
