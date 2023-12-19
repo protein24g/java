@@ -1,4 +1,4 @@
-package study.index.jcf;
+package study.index.jcf.list;
 
 import java.util.LinkedList;
 
