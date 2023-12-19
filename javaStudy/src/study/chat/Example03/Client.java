@@ -22,9 +22,7 @@ class SendThread implements Runnable{
     String name;
     BufferedReader keyboard;
     BufferedWriter out;
-    public SendThread(Socket socket){
-        this.socket = socket;
-    }
+    public SendThread(Socket socket){this.socket = socket;}
     public void run(){
         try{
             keyboard = new BufferedReader(new InputStreamReader(System.in));
