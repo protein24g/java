@@ -8,7 +8,7 @@ class Buffer{
         while (available == true){
             try{
                 wait();
-            }catch (InterruptedException e){}
+            }catch (InterruptedException e){}d
         }
         contents = value;
         System.out.println("생산자 ##### : 생산 " + contents);
